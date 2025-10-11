@@ -1,0 +1,11 @@
+# Files to exclude from version control and email sharing
+node_modules/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+.env
+*.log
+dist/
+build/
+.DS_Store
+Thumbs.db
