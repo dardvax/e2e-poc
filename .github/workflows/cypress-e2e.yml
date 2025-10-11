@@ -1,8 +1,7 @@
 name: Cypress E2E Tests
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize, edited]
+  workflow_dispatch: {}
 
 jobs:
   test:
@@ -30,14 +29,6 @@ jobs:
         run: |
           echo "KEYCLOAK_USERNAME=${{ secrets.KEYCLOAK_USERNAME }}" > .env
           echo "KEYCLOAK_PASSWORD=${{ secrets.KEYCLOAK_PASSWORD }}" >> .env
-
-      # 5️⃣ Build project (if build script exists)
-      - name: Build project (if needed)
-        run: |
-          if npm run | grep -q "build"; then
-            npm run build
-          else
-            echo "No build step"
-          fi
-
-      # 6️⃣ Run Cypress tests with Moc
+      # 5️⃣ Run Cypress tests (all specs)
+      - name: Run Cypress tests (headless)
+        run: npx cypress run
