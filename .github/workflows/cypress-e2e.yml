@@ -20,7 +20,16 @@ jobs:
         with:
           node-version: 20.x
 
-      # 3️⃣ Install dependencies
+      # 3️⃣ Cache npm and install dependencies
+      - name: Cache NPM
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm ci
 
@@ -29,16 +38,9 @@ jobs:
         run: |
           echo "KEYCLOAK_USERNAME=${{ secrets.KEYCLOAK_USERNAME }}" > .env
           echo "KEYCLOAK_PASSWORD=${{ secrets.KEYCLOAK_PASSWORD }}" >> .env
-      # 5️⃣ Run Cypress tests (all specs) and capture log
-      - name: Run Cypress tests (headless)
-        run: |
-          # Stream output to the job logs and save to cypress-run.log for artifact upload
-          npx cypress run 2>&1 | tee cypress-run.log
-
-      # 6️⃣ Upload the captured Cypress run log so you can download it from the run
-      - name: Upload Cypress run log
-        if: always()
-        uses: actions/upload-artifact@v4
+      # 5️⃣ Run Cypress tests using the official Cypress GitHub Action
+      - name: Run Cypress tests headless
+        uses: cypress-io/github-action@v6
         with:
-          name: cypress-run-log
-          path: cypress-run.log
+          record: false       # don’t send results to Cypress Dashboard
+          browser: electron   # explicitly use Electron (the action runs headless by default)
