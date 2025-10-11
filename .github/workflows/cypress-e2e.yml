@@ -29,6 +29,16 @@ jobs:
         run: |
           echo "KEYCLOAK_USERNAME=${{ secrets.KEYCLOAK_USERNAME }}" > .env
           echo "KEYCLOAK_PASSWORD=${{ secrets.KEYCLOAK_PASSWORD }}" >> .env
-      # 5️⃣ Run Cypress tests (all specs)
+      # 5️⃣ Run Cypress tests (all specs) and capture log
       - name: Run Cypress tests (headless)
-        run: npx cypress run
+        run: |
+          # Stream output to the job logs and save to cypress-run.log for artifact upload
+          npx cypress run 2>&1 | tee cypress-run.log
+
+      # 6️⃣ Upload the captured Cypress run log so you can download it from the run
+      - name: Upload Cypress run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-run-log
+          path: cypress-run.log
