@@ -7,9 +7,11 @@ export class WarehouseReceive extends Base {
 
   // Selectors
   public readonly selectors = {
-  // recive orders page
-  searchInput: '[test-main-search-input]',
-  gridTableRow: { selector: 'div.table__body .table__row', timeout: 15000 },
+    // User label for login verification
+    userLabel: 'span.ellipsis-text.link__label',
+    // recive orders page
+    searchInput: '[test-main-search-input]',
+    gridTableRow: { selector: 'div.table__body .table__row' },
   
     // Order details
     // class based selectors
@@ -170,6 +172,14 @@ public selectOptionInListByText(listSelector: string, optionSelector: string, op
     cy.get(selector)
       .should('be.visible')
       .and('have.value', expectedValue);
+  }
+
+  /**
+   * Waits for an element to be visible and returns the chainable for further assertions.
+   * @param selector - The selector to wait for.
+   */
+  public waitForElementVisible(selector: string) {
+    return cy.get(selector).should('be.visible');
   }
   //==================================================================================
 

@@ -22,6 +22,16 @@
    npx cypress run
    ```
 
+Additional CLI examples (run a single spec):
+
+```powershell
+# Headless: run the login spec
+npx cypress run --spec "cypress/e2e/login.cy.ts"
+
+# Headed: open a visible browser for the login spec
+npx cypress run --headed --spec "cypress/e2e/login.cy.ts"
+```
+
 ## Project Structure
 
 ```

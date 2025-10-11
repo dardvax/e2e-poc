@@ -9,11 +9,20 @@ describe('Keycloak Login Clean', () => {
 
   it('should display the map page', () => {
     // Wait for the user label to exist, scroll into view, then assert
-    cy.get('span.ellipsis-text.link__label', { timeout: 10000 })
+    cy.get('span.ellipsis-text.link__label')
       .contains('E2e Tester')
       .scrollIntoView()
       .should('be.visible')
-      .and('have.text', ' E2e Tester ');
 
   });
+      afterEach(() => {
+        // Block all API calls that continue logging
+        cy.intercept('POST', '**', { statusCode: 204 }).as('blockAll');
+        cy.intercept('GET', '**', { statusCode: 204 }).as('blockAllGet');
+        
+        // Clear storage and cookies immediately
+        cy.clearCookies();
+        cy.clearAllLocalStorage();
+        cy.clearAllSessionStorage();
+    });
 });

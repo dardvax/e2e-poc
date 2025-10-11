@@ -22,10 +22,21 @@ describe('Warehouse Receive Page', () => {
       .should('be.visible')
       .clear()
       .type('test item');
-    // Add assertions for search results when available
   });
 
   it('should have autofocus on search input', () => {
-    cy.get(warehouseReceive.selectors.searchInput).should('have.focus');
+    cy.get(warehouseReceive.selectors.searchInput)
+    .should('have.focus');
+  });
+
+  afterEach(() => {
+    // Block all API calls that continue logging
+    cy.intercept('POST', '**', { statusCode: 204 }).as('blockAll');
+    cy.intercept('GET', '**', { statusCode: 204 }).as('blockAllGet');
+    
+    // Clear storage and cookies immediately
+    cy.clearCookies();
+    cy.clearAllLocalStorage();
+    cy.clearAllSessionStorage();
   });
 });
