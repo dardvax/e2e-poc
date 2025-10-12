@@ -23,3 +23,9 @@ export const ApiWarehouse = {
     warehouseReceivingOrders: '/api/v2/warehouse/receiving-orders'
   }
 };
+
+export const Hierarchy = {
+  endpoints: {
+    hierarchy: '/api/v2/wms/locations/hierarchy'
+  }
+}

@@ -6,7 +6,7 @@ describe('Create Receive from Harvest Order', () => {
 
     beforeEach(() => {
         warehouseReceive = new Warehouse();
-        cy.loginIfNeeded(); // Only logs in if session is not active
+        cy.loginIfNeeded();
         cy.visit(CONFIG.endpoints.receivePage);
     });
 

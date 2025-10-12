@@ -11,22 +11,10 @@ describe('Create Receive from Harvest Order', () => {
   let nextMondayDate: string;
    
   beforeEach(() => {
-    cy.loginWithKeycloak(); // Use this instead - it always sets the token properly
+    cy.loginWithKeycloak();
     // Visit page first to see the UI
     cy.visit(CONFIG.endpoints.receivePage);
   });
-
-  // Test data for API assertions
-  /*const expectedData = {
-    orderState: 'CREATED',
-    orderType: 'RECEIVE_FROM_HARVEST',
-    locationGroupName: 'ZR',
-    partnerId: '000000',
-    comment: 'API order created',
-    product: 'Amarant, Zrno',
-    productCode: '(301290)',
-    quantity: '1'
-  };*/
 
   // expected results for API tests are in the payload
   const wmsPayload = createWmsPayload();

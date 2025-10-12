@@ -7,7 +7,7 @@ describe('Warehouse Receive Page', () => {
 
   beforeEach(() => {
     warehouseReceive = new Warehouse();
-    cy.loginIfNeeded(); // Only logs in if session is not active
+    cy.loginIfNeeded();
     warehouseReceive.visit();
   });
 
