@@ -1,12 +1,12 @@
 // cypress/e2e/warehouse.cy.ts
-import { WarehouseReceive } from '../pages/WarehouseReceive';
+import { Warehouse } from '../pages/Warehouse';
 
 
 describe('Warehouse Receive Page', () => {
-  let warehouseReceive: WarehouseReceive;
+  let warehouseReceive: Warehouse;
 
   beforeEach(() => {
-    warehouseReceive = new WarehouseReceive();
+    warehouseReceive = new Warehouse();
     cy.loginIfNeeded(); // Only logs in if session is not active
     warehouseReceive.visit();
   });

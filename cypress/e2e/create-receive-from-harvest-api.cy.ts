@@ -1,7 +1,7 @@
 // cypress/e2e/create-receive-from-harvest.cy.ts
 import { createWmsReceivingOrder, createWarehouseReceivingOrder } from '../helpers/apiHelper';
 import { createWmsPayload, createWarehousePayload } from '../data/payloads';
-import { WarehouseReceive } from '../pages/WarehouseReceive';
+import { Warehouse } from '../pages/Warehouse';
 import { CONFIG } from '../config/constants';
 import { WmsResponse } from 'cypress/data/wmsresponse';
 
@@ -81,7 +81,7 @@ describe('Create Receive from Harvest Order', () => {
   });
 
   it('checks if the created order appears in the UI grid', () => {    
-  const warehouseReceive = new WarehouseReceive();
+  const warehouseReceive = new Warehouse();
   cy.get(warehouseReceive.selectors.receiveOrdersTableRow).should('be.visible').and('have.length.greaterThan', 0);
   cy.get(warehouseReceive.selectors.receiveOrdersTableRow).first().should('not.be.empty');
 

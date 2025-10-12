@@ -1,7 +1,7 @@
 // cypress/pages/WarehouseReceive.ts
 import { Base } from './Base';
 
-export class WarehouseReceive extends Base {
+export class Warehouse extends Base {
   // Page URL
   protected readonly url = '/warehouse/receive';
 
