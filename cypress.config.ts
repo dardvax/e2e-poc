@@ -12,7 +12,7 @@ export default defineConfig({
     requestTimeout: 15000,              // Timeout for API requests
     responseTimeout: 15000,             // Timeout for server responses
     pageLoadTimeout: 30000,             // Timeout for page loads
-    setupNodeEvents(on, config) {
+    setupNodeEvents(on, config) {       // Register node event listeners during test run
       // Merge .env variables into Cypress.env()
       config.env = {
         ...config.env,

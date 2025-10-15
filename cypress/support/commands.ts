@@ -10,11 +10,6 @@ Cypress.Commands.add('loginWithKeycloak', () => {
   });
 });
 
-// New command that returns the token directly
-Cypress.Commands.add('getKeycloakTokenForAPI', () => {
-  return getKeycloakToken();
-});
-
 // Login if needed
 Cypress.Commands.add('loginIfNeeded', () => {
   cy.window().then((win) => {
@@ -30,14 +25,12 @@ Cypress.Commands.add('loginIfNeeded', () => {
   });
 });
 
-
 // TypeScript declaration
 declare global {
   namespace Cypress {
     interface Chainable {
       loginWithKeycloak(): Chainable<void>;
       loginIfNeeded(): Chainable<void>;
-      getKeycloakTokenForAPI(): Chainable<string>;
     }
   }
 }
