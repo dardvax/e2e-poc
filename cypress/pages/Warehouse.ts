@@ -74,16 +74,20 @@ export class Warehouse extends Base {
    * @param optionSelector - The selector for the option elements.
    * @param optionText - The text of the option to select.
    */
-public selectOptionInListByText(listSelector: string, optionSelector: string, optionText: string): void {
-  cy.get(listSelector).within(() => {
-    cy.get(optionSelector)
-      .filter((_, el) => el.textContent?.trim().toLowerCase() === optionText.trim().toLowerCase())
-      .first()
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-  });
-}
+  public selectOptionInListByText(
+    listSelector: string,
+    optionSelector: string,
+    optionText: string): void {
+    cy.get(listSelector).within(() => {
+      cy.get(optionSelector)
+        .filter((_, el) =>
+         el.textContent?.trim().toLowerCase() === optionText.trim().toLowerCase())
+        .first()
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
+    });
+  }
 
     /**
    * Gets an element by selector and clicks it after asserting visibility.
@@ -125,7 +129,12 @@ public selectOptionInListByText(listSelector: string, optionSelector: string, op
    * @param rowSelector - The selector for the grid table rows.
   */
   public assertOrderInGrid(
-    expectedOrder: { type: string; location: string; product: string; status: string },
+    expectedOrder: {
+      type: string;
+      location: string;
+      product: string;
+      status: string;
+    },
     rowSelector: string
   ): void {
     cy.get(rowSelector).each(($row) => {
