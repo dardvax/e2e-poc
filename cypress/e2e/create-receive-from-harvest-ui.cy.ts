@@ -84,7 +84,7 @@ describe('Create Receive from Harvest Order', () => {
             expectedOrder, warehouseReceive.selectors.receiveOrdersTableRow);
     });
 
-    afterEach(() => {
+    after(() => {
         // Block all API calls that continue logging
         cy.intercept('POST', '**', { statusCode: 204 }).as('blockAll');
         cy.intercept('GET', '**', { statusCode: 204 }).as('blockAllGet');

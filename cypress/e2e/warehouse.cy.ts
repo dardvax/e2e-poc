@@ -29,7 +29,7 @@ describe('Warehouse Receive Page', () => {
     .should('have.focus');
   });
 
-  afterEach(() => {
+  after(() => {
     // Block all API calls that continue logging
     cy.intercept('POST', '**', { statusCode: 204 }).as('blockAll');
     cy.intercept('GET', '**', { statusCode: 204 }).as('blockAllGet');

@@ -6,6 +6,7 @@ dotenv.config(); // load .env
 
 export default defineConfig({
   e2e: {
+    testIsolation: false,
     baseUrl: CONFIG.app.baseUrl,
     // Global timeout configurations
     defaultCommandTimeout: 10000,       // Default timeout for cy.get(), cy.contains(), etc.

@@ -4,8 +4,10 @@ import { getKeycloakToken } from '../helpers/keycloakHelper';
 Cypress.Commands.add('loginWithKeycloak', () => {
   cy.session('keycloak-E2E', () => {
     getKeycloakToken().then(token => {
-      window.sessionStorage.setItem('bearer', token);
-      Cypress.env('KEYCLOAK_TOKEN', token);
+      cy.window().then(win => {
+        win.sessionStorage.setItem('bearer', token);
+        Cypress.env('KEYCLOAK_TOKEN', token);
+      });
     });
   });
 });
