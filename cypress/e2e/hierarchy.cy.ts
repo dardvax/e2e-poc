@@ -1,5 +1,5 @@
 // cypress/e2e/hierarchy.cy.ts
-import { collectDescriptions, getHierarchy } from '../helpers/apiHelper';
+import { collectDescriptions, getHierarchy } from '@helpers/apiHelper';
 import { CONFIG } from '../config/constants';
 
 describe('Create Receive from Harvest Order', () => {

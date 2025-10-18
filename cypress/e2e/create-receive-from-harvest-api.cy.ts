@@ -1,5 +1,5 @@
 // cypress/e2e/create-receive-from-harvest.cy.ts
-import { createWmsReceivingOrder, createWarehouseReceivingOrder } from '../helpers/apiHelper';
+import { createWmsReceivingOrder, createWarehouseReceivingOrder } from '@helpers/apiHelper';
 import { createWmsPayload, createWarehousePayload } from '../data/payloads';
 import { Warehouse } from '../pages/Warehouse';
 import { CONFIG } from '../config/constants';
