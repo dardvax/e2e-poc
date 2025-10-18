@@ -36,13 +36,7 @@ export function getKeycloakToken() {
       },
       failOnStatusCode: false,
     });
-  }).then(formResp => {
-    // Debug: Log the response to see what's happening
-    cy.log('Form Response Status:', formResp.status);
-    cy.log('Form Response Headers:', JSON.stringify(formResp.headers));
-    cy.log('Username being used:', Cypress.env('keycloak').username);
-    cy.log('Password length:', Cypress.env('keycloak').password?.length || 'undefined');
-    
+  }).then(formResp => {    
     // Step 3: Extract auth code and exchange for token
     const location = Array.isArray(formResp.headers.location) 
       ? formResp.headers.location[0] 
