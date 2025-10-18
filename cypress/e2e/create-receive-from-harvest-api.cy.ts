@@ -11,7 +11,7 @@ describe('Create Receive from Harvest Order', () => {
   let nextMondayDate: string;
    
   beforeEach(() => {
-    cy.loginWithKeycloak();
+    cy.loginIfNeeded();
     // Visit page first to see the UI
     cy.visit(CONFIG.endpoints.receivePage);
   });

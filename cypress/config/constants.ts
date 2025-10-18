@@ -8,8 +8,7 @@ export const CONFIG = {
     baseUrl: "https://app.e2e.gcp.logineko.com"
   },
   api: {
-    baseUrl: "https://api.e2e.gcp.logineko.com",
-    unleash: "https://unleash.e2e.gcp.logineko.com/api/*"
+    baseUrl: "https://api.e2e.gcp.logineko.com"
   },
   endpoints: {
     map: "/map",

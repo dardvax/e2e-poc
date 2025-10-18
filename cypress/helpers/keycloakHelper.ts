@@ -20,7 +20,10 @@ export function getKeycloakToken() {
     failOnStatusCode: false,
   }).then(authResp => {
     // Step 2: Parse login form and submit credentials
-    const formAction = Cypress.$(authResp.body).find('form').attr('action');
+    const formAction = Cypress
+    .$(authResp.body)
+    .find('form')
+    .attr('action');
     
     return cy.request({
       method: 'POST',
@@ -49,7 +52,10 @@ export function getKeycloakToken() {
       throw new Error('No location header found in authentication response');
     }
     
-    const code = new URLSearchParams(location.split('#')[1]).get('code');
+    const code = new URLSearchParams(
+      location
+      .split('#')[1])
+      .get('code');
     
     return cy.request({
       method: 'POST',

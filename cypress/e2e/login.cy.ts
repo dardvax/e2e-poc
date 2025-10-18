@@ -5,10 +5,6 @@ describe('Keycloak login via API and SPA access', () => {
   it('logs in and opens Maps page as provided User', () => {
     cy.loginWithKeycloak();
 
-    cy.intercept(CONFIG.api.unleash, (req) => {
-      req.headers['authorization'] = `Bearer ${Cypress.env('KEYCLOAK_TOKEN')}`;
-    }).as('unleashApi');
-
     cy.visit(CONFIG.app.baseUrl + CONFIG.endpoints.map);
 
     // Verify initial login using POM selector
